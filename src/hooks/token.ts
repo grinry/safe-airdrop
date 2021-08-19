@@ -13,6 +13,7 @@ export type TokenMap = Map<string | null, MinimalTokenInfo>;
 export const networkMap = new Map([
   [1, "mainnet"],
   [4, "rinkeby"],
+  [30, "rsk"],
   [100, "xdai"],
   [137, "polygon"],
   [56, "bsc"],
@@ -115,7 +116,16 @@ export const useTokenInfoProvider: () => TokenInfoProvider = () => {
           }
         }
       },
-      getNativeTokenSymbol: () => (safe.chainId === 100 ? "xDai" : "ETH"),
+      getNativeTokenSymbol: () => {
+        switch (safe.chainId) {
+          case 30:
+            return "RBTC";
+          case 100:
+            return "xDai";
+          default:
+            return "ETH";
+        }
+      },
     }),
     [safe.chainId, tokenList, web3Provider],
   );
