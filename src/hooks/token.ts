@@ -23,8 +23,11 @@ export const networkMap = new Map([
 ]);
 
 const customNativeTokens = new Map([
+  [1, "ETH"],
+  [4, "ETH"],
   [56, "BNB"],
   [100, "xDai"],
+  [137, "MATIC"],
   [30, "RBTC"],
   [31, "tRBTC"],
 ]);
